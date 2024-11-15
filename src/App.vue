@@ -94,7 +94,7 @@ export default {
   methods: {
     async shortenUrl() {
       try {
-        const response = await axios.post("http://localhost:5000/shorten", {
+        const response = await axios.post(`${process.env.VUE_APP_API_URL}/shorten`, {
           originalUrl: this.originalUrl,
         });
         const newLink = {
@@ -111,7 +111,7 @@ export default {
 
     async fetchLinks() {
       try {
-        const response = await axios.get("http://localhost:5000/links");
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/links`);
         this.links = response.data.links; // Получаем все ссылки с сервера
       } catch (error) {
         console.error(error);
